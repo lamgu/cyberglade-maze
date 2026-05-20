@@ -300,11 +300,11 @@ function updateAndDrawParticles() {
 }
 
 function onHandResults(results) {
-    PointerHandler.updateFromHand(results, pointers, gameCanvas);
+    PointerHandler.updateFromHand(results, pointers, gameCanvas, playerCount); // BARU: Pass playerCount
 }
 
 function onFaceResults(results) {
-    PointerHandler.updateFromFace(results, pointers, gameCanvas, detectionMode);
+    PointerHandler.updateFromFace(results, pointers, gameCanvas, detectionMode, playerCount); // BARU: Pass playerCount
 }
 
 const hands = new window.Hands({
@@ -1032,6 +1032,14 @@ function resetGame() {
     playerTrail = []; 
     explosionParticles = [];
     winnerLabel = "";
+
+    if (playerCount === 1) {
+        players[0].label = 'P1';
+        pointers[0].label = 'P1';
+    } else {
+        players[0].label = 'L'; pointers[0].label = 'L';
+        players[1].label = 'R'; pointers[1].label = 'R';
+    }
 
     for (let i = 0; i < playerCount; i++) {
         players[i].isDead = false; 
