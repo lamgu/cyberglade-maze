@@ -13,8 +13,12 @@ A gesture-controlled maze game
 3. Fonts: Google Fonts
 
 ## HOW TO RUN?
-1. Clone the this repo `https://github.com/lamgu/cyberglide-maze.git`
+1. Clone the this [repository](https://www.github.com/lamgu/cyberglade-maze.git)
 2. Open VS Code
 3. Open command pallete (Ctrl + Shift + P)
-4. Choose "Live Server: Open with Live Server" (install the extension in "Extensions" tab, if you don't have it installed yet.)
+4. Choose "Live Server: Open with Live Server" (install the extension "Live Server" in "Extensions" tab, if you don't have it installed yet.)
 5. Enjoy!
+<br><br>
+> Idea by: [Ghulam](https://www.github.com/lamgu/)
+>
+> Developed by: [Xavier](https://www.github.com/Xavier0010)
