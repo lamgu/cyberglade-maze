@@ -2,8 +2,8 @@
 // Objek untuk mengelola seluruh animasi pembuka
 window.IntroAnimation = {
     // Properti
-    text1: "PROJECT PRESENT BY DTP AI SPECIALIST",
-    text2: "- CYBERGLIDE MAZE -", // Disingkat agar lebih pas
+    text1: "PROJECT PRESENTED BY DTP AI SPECIALIST",
+    text2: "- CYBERGLADE MAZE -", // Disingkat agar lebih pas
     charIndex1: 0,
     charIndex2: 0,
     isFinished: false,

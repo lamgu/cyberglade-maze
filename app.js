@@ -24,6 +24,10 @@ let dwellTimer = 0;
 const bgMusic = new Audio('https://files.catbox.moe/uswvy3.mp3');
 bgMusic.loop = true;
 
+// Logo
+const logoImg = new Image();
+logoImg.src = 'telkom-schools.png'
+
 // Waktu permainan
 let startTime = 0;
 let elapsedTime = 0;
@@ -139,7 +143,7 @@ const mediumMaze = [
     [1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1],
     [1,1,1,1,1,1,1,0,1,0,1,1,1,0,1,1,1,1,1],
     [1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],
-    [1,0,1,1,1,0,1,1,2,1,1,0,1,1,1,0,1,0,1],
+    [1,0,1,1,1,0,1,0,2,0,1,0,1,1,1,0,1,0,1],
     [1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1],
     [1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1],
     [1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,1],
@@ -439,6 +443,10 @@ function drawMenu(deltaTime) {
     canvasCtx.shadowColor = '#00FFFF'; 
     canvasCtx.shadowBlur = 20;
     canvasCtx.fillStyle = tc.text;
+    if (logoImg.complete) {
+        const logoSize = 120; // Sesuaikan ukuran logo di menu
+        canvasCtx.drawImage(logoImg, (gameCanvas.width / 2) - (logoSize / 2), 40, logoSize, logoSize);
+    }
     canvasCtx.fillText("CYBERGLADE MAZE", gameCanvas.width / 2, gameCanvas.height / 2 - 100);
     canvasCtx.shadowBlur = 0; 
 
@@ -701,6 +709,7 @@ function drawCountdown(deltaTime) {
 function drawPlaying(deltaTime, isActive = true) {
     const tc = themes[currentTheme];
 
+    // 1. Gambar seluruh tile maze terlebih dahulu
     for (let y = 0; y < GRID_SIZE; y++) {
         for (let x = 0; x < GRID_SIZE; x++) {
             const tile = maze[y][x];
@@ -719,6 +728,17 @@ function drawPlaying(deltaTime, isActive = true) {
             canvasCtx.strokeStyle = tc.gridBorder;
             canvasCtx.strokeRect(tileX, tileY, tileSize, tileSize);
         }
+    }
+
+    // 2. Gambar logo SETELAH loop maze selesai agar berada di atas tile
+    if (logoImg.complete) {
+        const mapLogoSize = tileSize * 3; // Menempati 2x2 (4 blok)
+        const centerX = offsetX + (GRID_SIZE / 2) * tileSize;
+        const centerY = offsetY + (GRID_SIZE / 2) * tileSize;
+
+        canvasCtx.globalAlpha = 0.5; // 30% Opacity
+        canvasCtx.drawImage(logoImg, centerX - (mapLogoSize / 2), centerY - (mapLogoSize / 2), mapLogoSize, mapLogoSize);
+        canvasCtx.globalAlpha = 1.0; // Kembalikan ke normal agar elemen lain tidak ikut transparan
     }
 
     if (isActive) {
