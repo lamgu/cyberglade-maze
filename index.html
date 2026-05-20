@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Maze Deteksi Tangan</title>
+    <!-- 1. Memuat file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 
+      Konten HTML utama.
+      Stream video untuk pop-up kamera.
+      Canvas untuk area game.
+    -->
+    <video id="webcam-stream" autoplay playsinline></video>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- 
+      2. Memuat library eksternal (MediaPipe) 
+      Ini adalah mesin deteksi tangan.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+
+    <!-- 
+      3. Memuat file JavaScript eksternal kita (Logika Game) 
+      Pastikan file custom dimuat sebelum file utama.
+    -->
+    <script src="intro.js"></script>
+    <script src="pointer-modes.js"></script>
+    <script src="level-editor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* --- 1. Reset & Pengaturan Dasar --- */
+
+/* BARU: Impor font futuristik dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* Mengatur 'box-sizing' agar padding tidak mempengaruhi ukuran total */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Menghilangkan margin dan padding default browser */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* Mencegah scrolling yang tidak perlu */
+    overflow: hidden; 
+    /* Latar belakang utama halaman */
+    background-color: #1a202c; /* abu-abu gelap */
+    /* MODIFIKASI: Menggunakan font Orbitron yang baru */
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* --- 2. Elemen Game & Video --- */
+
+/* Kanvas Game Utama */
+#game-canvas {
+    /* MODIFIKASI: Jadikan absolut untuk mengisi seluruh layar */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Kanvas akan ditampilkan sebagai elemen block (bukan inline) */
+    display: block;
+    /* Kita akan mengatur ukuran kanvas via JavaScript,
+      tapi ini memastikan kanvas tidak memiliki ukuran default yang aneh.
+    */
+    width: 100%;
+    height: 100%;
+    /* Mengatur latar belakang kanvas. 
+      Ini akan terlihat jika area game tidak menutupi seluruh kanvas.
+    */
+    background-color: #000;
+}
+
+/* Video stream (pop-up kamera) */
+#webcam-stream {
+    /* Diposisikan secara absolut relatif terhadap 'body' */
+    position: absolute;
+    top: 1rem;  /* 16px dari atas */
+    left: 1rem; /* 16px dari kiri */
+
+    /* Ukuran pop-up kamera diperkecil */
+    width: 20%; 
+    max-width: 240px; /* Batas maksimum ukuran */
+
+    border-radius: 0.5rem; /* rounded-lg */
+    
+    /* Cerminkan video agar seperti cermin */
+    transform: scaleX(-1);
+    
+    /* Tampilan video diatur agar menutupi area tanpa distorsi */
+    object-fit: cover;
+    /* Filter untuk meningkatkan visibilitas di atas game */
+    filter: grayscale(80%) brightness(1.1);
+    
+    /* Berada di atas kanvas game */
+    z-index: 100;
+}
