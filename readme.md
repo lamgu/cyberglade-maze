@@ -1,4 +1,4 @@
-# CYBERGLIDE MAZE
+# CYBERGLADE MAZE
 A gesture-controlled maze game
 
 ## FEATURES
